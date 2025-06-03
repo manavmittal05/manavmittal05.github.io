@@ -7,7 +7,7 @@ description: "About - {{ .Site.Title }}"
 url: "/about.html"
 ---
 
-## Hello, I'm [Your Name] 👋
+## Hello, I'm Manav Mittal 👋
 
 ## My Expertise
 
