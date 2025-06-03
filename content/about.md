@@ -28,13 +28,6 @@ regions.
 
 ---
 
-## 🎓 Education
-
-### B.Tech. in Computer Science and Artifical Intelligenc – IIIT Delhi
-*Delhi, India • GPA: 8.96/10 • Graduated 2025*  
-<!-- - Relevant Coursework: Algorithms, Machine Learning, Systems Programming -->
-
----
 
 ## 📂 Projects
 
@@ -56,6 +49,13 @@ regions.
 
 ---
 
+## 🎓 Education
+
+### B.Tech. in Computer Science and Artifical Intelligenc – IIIT Delhi
+*Delhi, India • GPA: 8.96/10 • Graduated 2025*  
+<!-- - Relevant Coursework: Algorithms, Machine Learning, Systems Programming -->
+
+---
 ## 🛠️ Skills
 
 - **Languages:** Python, C++, C, Java, JavaScript, Bash
