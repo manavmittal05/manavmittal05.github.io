@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 28 Mar 2024 15:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>🙋‍♂️ About Me</title>
+      <title>About Me</title>
       <link>http://localhost:1313/about.html</link>
       <pubDate>Thu, 28 Mar 2024 15:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about.html</guid>
-      <description>&lt;h2 id=&#34;hello-im-manav-mittal-&#34;&gt;Hello, I&amp;rsquo;m Manav Mittal 👋&lt;/h2&gt;&#xA;&lt;h2 id=&#34;my-expertise&#34;&gt;My Expertise&lt;/h2&gt;&#xA;&lt;h2 id=&#34;my-projects&#34;&gt;My Projects&lt;/h2&gt;&#xA;&lt;h2 id=&#34;lets-connect&#34;&gt;Let&amp;rsquo;s Connect&lt;/h2&gt;</description>
+      <description>&lt;h2 id=&#34;hello-im-manav-mittal-&#34;&gt;Hello, I&amp;rsquo;m Manav Mittal 👋&lt;/h2&gt;&#xA;&lt;h4 id=&#34;i-enjoy-building-things-that-combine-ai-systems-and-security--from-smart-assistive-tools-to-research-on-internet-freedom-i-like-solving-real-world-problems-through-tech-that-actually-makes-a-difference&#34;&gt;I enjoy building things that combine AI, systems, and security — from smart assistive tools to research on internet freedom. I like solving real-world problems through tech that actually makes a difference.&lt;/h4&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-experience&#34;&gt;🧑‍💼 Experience&lt;/h2&gt;&#xA;&lt;h3 id=&#34;product-development-intern&#34;&gt;Product Development Intern&lt;/h3&gt;&#xA;&lt;p&gt;&lt;em&gt;Adobe • May 2024 – Jul 2024&lt;/em&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Designed and implemented a REST API using the &lt;em&gt;Apache Sling framework&lt;/em&gt; and Java to generate &lt;em&gt;AI-driven content suggestions&lt;/em&gt; for DITA documents stored in a Java Content Repository.&lt;/li&gt;&#xA;&lt;li&gt;Built a full-stack web application leveraging JUI-Spectrum, &lt;em&gt;React&lt;/em&gt;, and &lt;em&gt;TypeScript&lt;/em&gt; to integrate the API and display smart suggestions and reports for DITA documents.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;researcher&#34;&gt;Researcher&lt;/h3&gt;&#xA;&lt;p&gt;&lt;em&gt;Networks and Security Lab, IIIT Delhi • Jan 2023 – Jun 2025&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
