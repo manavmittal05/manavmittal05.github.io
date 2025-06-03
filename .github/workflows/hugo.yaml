@@ -1,61 +1,98 @@
-baseURL: 'https://manavmittal05.github.io/'
-languageCode: 'en-us'
-title: 'My Website'
-theme: 'terminal'
-timeZone: "Asia/Kolkata"
-menus:
-  main:
-    - identifier: about
-      name: About
-      url: /about.html
-      weight: 20
-    - identifier: blog
-      name: Blog
-      url: /blog
-      weight: 30
-    # - identifier: tags
-    #   name: Tags
-    #   url: /tags
-    #   weight: 40
-pagination:
-  pagerSize: 10
-permalinks:
-  blog: "/blog/:year/:month/:day/:title/"
-taxonomies:
-  tag: "tags"
-  author: "authors"
-indexes:
-  tag: "tags"
-markup:
-  defaultMarkdownHandler: "goldmark"
-  goldmark:
-    # Enable or disable smartypants (automatic conversion of ASCII punctuation to smart punctuation)
-    smartypants: true
-    # Enable or disable fractions (automatic conversion of fractions)
-    fractions: true
-    # Enable or disable superscript and subscript support
-    # (enable to allow ^ and ~ for superscript and subscript)
-    superscript: true
-    unsafe: true
-ignoreFiles:
-  - "themes/terminal/content"
-outputs:
-#   blog:
-#     - HTML
-#     - RSS
-#     - sitemap-blog.xml
-  home:
-    - HTML
-    - RSS
-    - SITEMAP
-params:
-  social:
-    - name: github
-      url: https://github.com/manavmittal05
-    - name: linkedin
-      url: https://linkedin.com/in/manavmittal05
+# Sample workflow for building and deploying a Hugo site to GitHub Pages
+name: Deploy Hugo site to Pages
 
-module:
-  hugoVersion:
-    extended: false
-    min: "0.116.0"
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.147.2
+      HUGO_ENVIRONMENT: production
+      TZ: America/Los_Angeles
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Create third-party directory
+        run: mkdir -p /home/runner/work/manavmittal05.github.io/manavmittal05.github.io/layouts/partials/third_party_js
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Cache Restore
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ runner.temp }}/hugo_cache
+          key: hugo-${{ github.run_id }}
+          restore-keys:
+            hugo-
+      - name: Configure Git
+        run: git config core.quotepath false
+      - name: Build with Hugo
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --cacheDir "${{ runner.temp }}/hugo_cache"
+      - name: Cache Save
+        id: cache-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ runner.temp }}/hugo_cache
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
