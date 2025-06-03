@@ -1,0 +1,61 @@
+baseURL: 'https://manavmittal05.github.io/'
+languageCode: 'en-us'
+title: 'My Website'
+theme: 'terminal'
+timeZone: "Asia/Kolkata"
+menus:
+  main:
+    - identifier: about
+      name: About
+      url: /about.html
+      weight: 20
+    - identifier: blog
+      name: Blog
+      url: /blog
+      weight: 30
+    # - identifier: tags
+    #   name: Tags
+    #   url: /tags
+    #   weight: 40
+pagination:
+  pagerSize: 10
+permalinks:
+  blog: "/blog/:year/:month/:day/:title/"
+taxonomies:
+  tag: "tags"
+  author: "authors"
+indexes:
+  tag: "tags"
+markup:
+  defaultMarkdownHandler: "goldmark"
+  goldmark:
+    # Enable or disable smartypants (automatic conversion of ASCII punctuation to smart punctuation)
+    smartypants: true
+    # Enable or disable fractions (automatic conversion of fractions)
+    fractions: true
+    # Enable or disable superscript and subscript support
+    # (enable to allow ^ and ~ for superscript and subscript)
+    superscript: true
+    unsafe: true
+ignoreFiles:
+  - "themes/terminal/content"
+outputs:
+#   blog:
+#     - HTML
+#     - RSS
+#     - sitemap-blog.xml
+  home:
+    - HTML
+    - RSS
+    - SITEMAP
+params:
+  social:
+    - name: github
+      url: https://github.com/manavmittal05
+    - name: linkedin
+      url: https://linkedin.com/in/manavmittal05
+
+module:
+  hugoVersion:
+    extended: false
+    min: "0.116.0"
